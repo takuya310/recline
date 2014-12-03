@@ -77,13 +77,6 @@
                         });
                         dataset.fetch();
                         var views = createExplorer(dataset, state, dataExplorerSettings);
-                        // The map needs to get redrawn when we are delivering from the ajax
-                        // call.
-                        $.each(views, function(i, view) {
-                            if (view.id == 'map') {
-                                view.view.redraw('refresh');
-                            }
-                        });
                     },
                     error: function(x, t, m) {
                         if (t === "timeout") {
@@ -173,7 +166,6 @@
         Drupal.settings.recline.args = {
             model: dataset,
             el: $el,
-            state: state,
             views: views
         };
 
